@@ -1,6 +1,8 @@
+<!-- Partial for article submission form -->
 <% if @article.errors.any? %>
   <h2>The following errors prevented the article from getting created:</h2>
   <ul>
+    <!-- List any/all error messages -->
     <% @article.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
@@ -9,16 +11,19 @@
 
 <%= form_for @article do |f| %>
 
+  <!-- Title -->
   <p>
     <%= f.label :title %> <br/>
     <%= f.text_field :title %>
   </p>
 
+  <!-- Description -->
   <p>
     <%= f.label :description %> <br/>
     <%= f.text_area :description %>
   </p>
 
+  <!-- Submit Button -->
   <p>
     <%= f.submit %>
   </p>
