@@ -22,7 +22,8 @@ class ArticlesController < ApplicationController
 
     # Validation passed
     if @article.save
-      flash[:notice] = "Article was successfully created"
+      # Flash green
+      flash[:success] = "Article was successfully created"
       redirect_to article_path(@article)
     # Validation failed
     else
@@ -33,7 +34,8 @@ class ArticlesController < ApplicationController
   def update
     # Validation passed
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated"
+      # Flash green
+      flash[:success] = "Article was successfully updated"
       redirect_to article_path(@article)
     # Validation failed
     else
@@ -48,8 +50,8 @@ class ArticlesController < ApplicationController
     # Find and delete article
     @article.destroy
 
-    # Notify user and redirect to listing
-    flash[:notice] = "Article was successfully deleted"
+    # Notify user (flash red) and redirect to listing
+    flash[:danger] = "Article was successfully deleted"
     redirect_to articles_path
   end
 
