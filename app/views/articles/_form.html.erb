@@ -2,7 +2,7 @@
 <%= render 'shared/errors', obj: @article %>
 
 <!-- Partial for article submission form -->
-<div class='row'>
+<div class="row">
   <div class="col-xs-12">
     <%= form_for(@article, :html => { class: "form-horizontal", role: "form" }) do |f| %>
 
@@ -35,7 +35,7 @@
 
     <% end %>
 
-    <div class="col-xs-4 col-xs-offset-5">
+    <div class="center">
       [ <%= link_to "Cancel request and return to listing", articles_path %> ]
     </div>
   </div>
