@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
 
   def index
-    # Grab all articles in database
-    @articles = Article.all
+    # Grab articles in database
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
   def new
