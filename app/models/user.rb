@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  # Establish Active Record Association
+  has_many :articles
+
+  # Downcase emails before storing to database
+  before_save { self.email = email.downcase }
+
   validates :username, presence: true, 
             uniqueness: { case_sensitive: false }, 
             length: { minimum: 3, maximum: 25 }

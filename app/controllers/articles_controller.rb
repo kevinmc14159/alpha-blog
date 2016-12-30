@@ -17,8 +17,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    debugger
     # New instance variable with title and description
     @article = Article.new(article_params)
+
+    # Hardcode user for now
+    @article.user = User.first
 
     # Validation passed
     if @article.save
