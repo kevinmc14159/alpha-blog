@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # Establish Active Record Association
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   # Downcase emails before storing to database
   before_save { self.email = email.downcase }

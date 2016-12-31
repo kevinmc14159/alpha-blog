@@ -4,9 +4,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   # Protect users from being edited by others
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
+  # Only admins can delete other users
+  before_action :require_admin, only: [:destroy]
 
   def index
+    # Show only 5 users at a time
     @users = User.paginate(page: params[:page], per_page: 5)
   end
 
@@ -42,6 +46,14 @@ class UsersController < ApplicationController
     @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
+  # Method for admins to delete users
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:danger] = "User and all articles created by user have been deleted"
+    redirect_to users_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)
@@ -52,8 +64,15 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user and !current_user.admin?
         flash[:danger] = "You can only edit your own account"
+        redirect_to root_path
+      end
+    end
+
+    def require_admin
+      if logged_in? and !current_user.admin?
+        flash[:danger] = "Only admin users can perform that action"
         redirect_to root_path
       end
     end
