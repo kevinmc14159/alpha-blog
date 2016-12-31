@@ -3,6 +3,12 @@ class ArticlesController < ApplicationController
   # Call helper on actions that work with a specific article in database
   before_action :set_article, only: [:edit, :update, :show, :destroy]
 
+  # New, edit, create, update, & destroy actions need a user to call them
+  before_action :require_user, except: [:index, :show]
+
+  # Actions only owners of articles can call
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def index
     # Grab articles in database
     @articles = Article.paginate(page: params[:page], per_page: 5)
@@ -17,12 +23,11 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    debugger
     # New instance variable with title and description
     @article = Article.new(article_params)
 
-    # Hardcode user for now
-    @article.user = User.first
+    # Assign owner of article
+    @article.user = current_user
 
     # Validation passed
     if @article.save
@@ -68,6 +73,14 @@ class ArticlesController < ApplicationController
     # Whitelist title and description parameters
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    # Protect articles from users other than creator
+    def require_same_user
+      if current_user != @article.user
+        flash[:danger] = "You can only edit or delete your own articles"
+        redirect_to root_path
+      end
     end
     
 end

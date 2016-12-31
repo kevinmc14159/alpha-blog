@@ -18,6 +18,15 @@ Rails.application.routes.draw do
   # More paths for account management
   resources :users, except: [:new]
 
+  # Request login form
+  get 'login', to: 'sessions#new'
+
+  # Login action
+  post 'login', to: 'sessions#create'
+
+  # Logout action
+  delete 'logout', to: 'sessions#destroy'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
