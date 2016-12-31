@@ -20,11 +20,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # Sign up successful
     if @user.save
       # Immediately sign user in
       session[:user_id] = @user.id
       flash[:success] = "Welcome to the Alpha Blog, #{@user.username}"
       redirect_to user_path(@user)
+    # Sign up unsuccessful
     else
       render 'new'
     end
@@ -33,6 +35,7 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # Attempt to update user data with new params
   def update
     if @user.update(user_params)
       flash[:success] = "Your account was updated successfully"
@@ -43,6 +46,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Grab all user articles in paginated form
     @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
@@ -55,6 +59,7 @@ class UsersController < ApplicationController
   end
 
   private
+    # Whitelist username, email, and password parameters
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
@@ -63,6 +68,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    # Helper to grant privileges to account owners
     def require_same_user
       if current_user != @user and !current_user.admin?
         flash[:danger] = "You can only edit your own account"
@@ -70,6 +76,7 @@ class UsersController < ApplicationController
       end
     end
 
+    # Restrict admin capabilities
     def require_admin
       if logged_in? and !current_user.admin?
         flash[:danger] = "Only admin users can perform that action"

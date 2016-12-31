@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Paths for article creating, editing, patching, deleting, showing, indexing 
   resources :articles
 
-  # Path for new account creation
+  # Path for new account creation. "signup" is more intuitive than "users/new"
   get 'signup', to: 'users#new'
 
   # More paths for account management
