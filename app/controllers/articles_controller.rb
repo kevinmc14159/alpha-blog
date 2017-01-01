@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # New instance variable with title and description
+    # New instance variable with title, description, and categories
     @article = Article.new(article_params)
 
     # Assign owner of article
@@ -70,9 +70,9 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Whitelist title and description parameters
+    # Whitelist title, description, and categories parameters
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [] )
     end
 
     # Protect articles from users other than creator and admin
