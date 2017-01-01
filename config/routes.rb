@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   # Logout action
   delete 'logout', to: 'sessions#destroy'
 
+  # Enable routes for category actions
+  resources :categories, except: [:destroy]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
