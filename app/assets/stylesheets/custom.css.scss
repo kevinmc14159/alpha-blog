@@ -3,21 +3,32 @@ $navbar-default-bg: black;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-color: #d6d6d6 !important;
+}
+
+.listing_titles {
+  font-family: 'Libre Baskerville';
+}
+
 #title {
-  color: #d6d6d6;
+  font-family: 'Libre Baskerville';
+  letter-spacing: 10px;
+  color: #dbdbdb;
   text-shadow: 0px 3px 10px black;
 }
 
 #logo {
-  color: #E84C3D !important;
+  font-family: 'Libre Baskerville';
+  letter-spacing: 3px;
+  color: #E84C3D;
   float: left;
   font-size: 1.7em;
-  color: #fff;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #d6d6d6 !important;
+  color: #dbdbdb;
   text-decoration: none;
 }
 
@@ -102,5 +113,5 @@ footer {
   padding-top: 5px;
   padding-left: 25px;
   padding-bottom: 25px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid black;
 }
