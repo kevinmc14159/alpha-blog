@@ -1,4 +1,4 @@
-=\ Alpha Blog
+= Alpha Blog
 == Description
 == Features
 '*'
