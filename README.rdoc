@@ -1,7 +1,7 @@
 = Alpha Blog
 == Description
 == Features
-'*'
-'*'
-'*'
+  '*'
+  '*'
+  '*'
 == Testing
