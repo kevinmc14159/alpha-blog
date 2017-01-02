@@ -4,20 +4,20 @@ $navbar-default-bg: black;
 @import "bootstrap";
 
 #title {
+  color: #d6d6d6;
   text-shadow: 0px 3px 10px black;
 }
 
 #logo {
+  color: #E84C3D !important;
   float: left;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #E84C3D;
+  color: #d6d6d6 !important;
   text-decoration: none;
 }
 
