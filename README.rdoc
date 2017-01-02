@@ -1,1 +1,7 @@
-This is the repository for my alpha-blog app.
+=\ Alpha Blog
+== Description
+== Features
+'*'
+'*'
+'*'
+== Testing
