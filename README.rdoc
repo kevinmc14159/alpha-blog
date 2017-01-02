@@ -7,4 +7,4 @@ Alpha Blog is a blog application written in the Ruby programming language while 
 * User authentication system via users, passwords, and sessions
 * Article categories via Active Record associations
 == Testing
-Unit, functional, and integration tests were written during the development Alpha Blog.
+Unit, functional, and integration tests were written during the development of Alpha Blog.
