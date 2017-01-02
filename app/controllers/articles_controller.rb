@@ -65,22 +65,22 @@ class ArticlesController < ApplicationController
   end
 
   private 
-    # Helper that creates instance variable and sets to specific article
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  # Helper that creates instance variable and sets to specific article
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    # Whitelist title, description, and categories parameters
-    def article_params
-      params.require(:article).permit(:title, :description, category_ids: [] )
-    end
+  # Whitelist title, description, and categories parameters
+  def article_params
+    params.require(:article).permit(:title, :description, category_ids: [] )
+  end
 
-    # Protect articles from users other than creator and admin
-    def require_same_user
-      if current_user != @article.user and !current_user.admin?
-        flash[:danger] = "You can only edit or delete your own articles"
-        redirect_to root_path
-      end
+  # Protect articles from users other than creator and admin
+  def require_same_user
+    if current_user != @article.user and !current_user.admin?
+      flash[:danger] = "You can only edit or delete your own articles"
+      redirect_to root_path
     end
+  end
     
 end

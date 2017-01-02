@@ -1,20 +1,26 @@
 class CategoriesController < ApplicationController
 
+  # Limit category privileges to admins
   before_action :require_admin, except: [:index, :show]
 
   def index
+    # Grab 5 categories in database at a time
     @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
   def new
+    # Instance variable for new Category
     @category = Category.new
   end
 
   def create
+    # New instance variable with name
     @category = Category.new(category_params)
+    # Category created
     if @category.save
       flash[:success] = "Category was created successfully"
       redirect_to categories_path
+    # Errors while creating category
     else
       render 'new'
     end
@@ -26,9 +32,11 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
+    # Validation passed
     if @category.update(category_params)
       flash[:success] = "Category name was successfully updated"
       redirect_to category_path(@category)
+    # Validation failed
     else
       render 'edit'
     end
@@ -40,16 +48,17 @@ class CategoriesController < ApplicationController
   end
 
   private
-    # Whitelist name param
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  # Whitelist name param
+  def category_params
+    params.require(:category).permit(:name)
+  end
 
-    def require_admin
-      if !logged_in? || (logged_in? and !current_user.admin?)
-        flash[:danger] = "Only admins can perform that action"
-        redirect_to categories_path
-      end
+  # Method to restrict certain category actions to admins
+  def require_admin
+    if !logged_in? || (logged_in? and !current_user.admin?)
+      flash[:danger] = "Only admins can perform that action"
+      redirect_to categories_path
     end
+  end
 
 end

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
 
+  # Create admin for tests
   def setup
     @user = User.create(username: "john", email: "john@example.com", password: "password", admin: true)
   end
@@ -15,6 +16,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     assert_difference 'Category.count', 1 do
       post_via_redirect categories_path, category: { name: "sports" }
     end
+
     assert_template 'categories/index'
     assert_match "sports", response.body
   end
@@ -28,6 +30,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Category.count' do
       post categories_path, category: { name: " " }
     end
+    
     assert_template 'categories/new'
     assert_select 'h2.panel-title'
     assert_select 'div.panel-body'

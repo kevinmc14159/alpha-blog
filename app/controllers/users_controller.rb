@@ -59,29 +59,29 @@ class UsersController < ApplicationController
   end
 
   private
-    # Whitelist username, email, and password parameters
-    def user_params
-      params.require(:user).permit(:username, :email, :password)
-    end
+  # Whitelist username, email, and password parameters
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Helper to grant privileges to account owners
-    def require_same_user
-      if current_user != @user and !current_user.admin?
-        flash[:danger] = "You can only edit your own account"
-        redirect_to root_path
-      end
+  # Helper to grant privileges to account owners
+  def require_same_user
+    if current_user != @user and !current_user.admin?
+      flash[:danger] = "You can only edit your own account"
+      redirect_to root_path
     end
+  end
 
-    # Restrict admin capabilities
-    def require_admin
-      if logged_in? and !current_user.admin?
-        flash[:danger] = "Only admin users can perform that action"
-        redirect_to root_path
-      end
+  # Restrict admin capabilities
+  def require_admin
+    if logged_in? and !current_user.admin?
+      flash[:danger] = "Only admin users can perform that action"
+      redirect_to root_path
     end
+  end
 
 end

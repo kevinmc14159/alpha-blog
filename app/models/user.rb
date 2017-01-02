@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Establish Active Record Association
   has_many :articles, dependent: :destroy
 
@@ -18,4 +19,5 @@ class User < ActiveRecord::Base
 
   # Enable passwords for users via one way hash digest
   has_secure_password
+  
 end

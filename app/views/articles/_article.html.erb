@@ -9,14 +9,16 @@
         <div class="article-body">
           <%= truncate(article.description, length: 100) %>
           <div class="article-meta-details">
+
             <!-- Display article data -->
             <small>Created by: <%= article.user.username if article.user %>, 
                     <%= time_ago_in_words(article.created_at) %> ago, 
                     last updated: <%= time_ago_in_words(article.updated_at) %> ago
             </small>
+
           </div>
         </div>
-
+        
         <% if article.categories.any? %>
           <p>Categories: <%= render article.categories %></p>
         <% end %>

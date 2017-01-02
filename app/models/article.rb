@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  
   # Establish Active Record Association
   belongs_to :user
   has_many :article_categories

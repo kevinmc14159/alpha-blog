@@ -2,6 +2,7 @@
 
 <div class="well col-xs-8 col-xs-offset-2">
 
+  <!-- Information about article author -->
   <% if @article.user %>
     <ul class="listing">
       <div class="row center">
@@ -25,10 +26,12 @@
   <hr>
   <%= simple_format(@article.description) %>
 
+  <!-- Article's categories -->
   <% if @article.categories.any? %>
     <p>Categories: <%= render @article.categories %></p>
   <% end %>
 
+  <!-- Article modification actions -->
   <div class="article-actions">
     <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
       <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
