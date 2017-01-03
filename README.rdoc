@@ -10,5 +10,6 @@ Alpha Blog is a blog application written in the Ruby programming language while 
 * User profile images via gravatar
 * Permissions system to prevent users from editing or deleting other articles or users
 * Admin user with all permissions
+* Validations for various actions
 == Testing
 Unit, functional, and integration tests were written during the development of Alpha Blog.
