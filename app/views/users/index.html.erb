@@ -1,4 +1,4 @@
-<h1 align="center" class="listing_titles">All Alpha Bloggers</h1>
+<h1 align="center" class="custom_font">All Alpha Bloggers</h1>
 
 <div align="center">
   <!-- Pagination links -->
@@ -9,7 +9,7 @@
         <div class="well col-md-4 col-md-offset-4">
           <!-- Gravatar and username go to user profile -->
           <li><%= link_to gravatar_for(user), user_path(user) %></li>
-          <li class="article-title">
+          <li class="article-title custom_font">
             <%= link_to user.username, user_path(user) %>
           </li>
           <li>

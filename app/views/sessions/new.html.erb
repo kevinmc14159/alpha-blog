@@ -1,4 +1,4 @@
-<h1 align="center" class="listing_titles">Log in</h1>
+<h1 align="center" class="custom_font">Log in</h1>
 
 <!-- Send login data to login_path -->
 <%= form_for(:session, :html => { class: "form-horizontal", role: "form" }, url: login_path) do |f| %>
@@ -18,7 +18,7 @@
     <%= f.label :password %>
   </div>
   <div class="col-sm-8">
-    <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Enter password", autocomplete: "off" %>
   </div>
 </div>
 
