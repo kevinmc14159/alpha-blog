@@ -1,7 +1,7 @@
 = Alpha Blog
 Heroku[http://kmc-blog.herokuapp.com/]
-== Description
-Alpha Blog is a blog application written in the Ruby programming language while utilizing the Rails server-side framework. The front-end styling is written using the Bootstrap framework. For production, it is deployed via heroku.
+== About
+I created Alpha Blog during my leisure to learn and practice the Ruby programming language, the Rails server-side framework, and the Bootstrap front-end framework. For production, I deployed via heroku.
 == Features
 * CRUD functions for user written articles
 * User authentication system via users, passwords, and sessions

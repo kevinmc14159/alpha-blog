@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
 
   # Whitelist title, description, and categories parameters
   def article_params
-    params.require(:article).permit(:title, :description, category_ids: [] )
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   # Protect articles from users other than creator and admin
